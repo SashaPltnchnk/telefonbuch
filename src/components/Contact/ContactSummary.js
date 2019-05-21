@@ -3,14 +3,14 @@ import { Card, Icon, Image } from 'semantic-ui-react';
 import imagys from '../../assets/math.jpg';
 import styled from 'styled-components'
 
-const Wrapper = styled.div`
-    width: ${pr => pr.width}px;
-    color" ${pr => pr.red ? '#321321' : ''}
-`
+// const Wrapper = styled.div`
+//     width: ${pr => pr.width}px;
+//     color" ${pr => pr.red ? '#321321' : ''}
+// `
 
-const ExtendedWrapper = styled(Wrapper)`
+// const ExtendedWrapper = styled(Wrapper)`
     
-`
+// `
 
 const CardStyled = styled(Card)`
     padding: 20px;

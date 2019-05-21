@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
-import axios from '../../axios-contacts';
+import ContactSummary from '../Contact/ContactSummary';
+import { connect } from 'react-redux';
+import { fetchContacts } from '../../store/actions/contacts';
+
 
 
 class ContactList extends Component {
-    state = {
-        contacts: []
-    }
-    componentDidMount() {
-        axios.get('/contacts/')
-            .then(res => {
-                console.log(res);
-            })
-            .catch(err => {
-                console.error(err);
-            })
-    }
 
   render() {
+    console.log(this.props.fetchContacts())
     return (
       <div>
+        
         
       </div>
     )
   }
 }
 
-export default ContactList;
+
+
+
+export default connect(null, {fetchContacts})(ContactList);

@@ -9,6 +9,11 @@
     "react-redux": "^7.0.3",
     "react-scripts": "3.0.1",
     "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^1.0.2",
+    "redux-saga-requests": "^0.24.1",
+    "redux-saga-requests-axios": "^0.7.6",
+    "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.87.1",
     "styled-components": "^4.2.0"

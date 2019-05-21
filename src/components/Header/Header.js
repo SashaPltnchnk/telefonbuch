@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchInput from '../SearchInput/SearchInput';
-import Modal from '../Modal/Modal';
+import ModalContact from '../Modal/Modal';
 import { Header, Segment } from 'semantic-ui-react';
 
 
@@ -15,7 +15,7 @@ const header = () => (
     <Header as='h4' inverted color='teal' size='tiny' >
         <SearchInput />
       Phone book
-        <Modal />
+        <ModalContact />
     </Header>
   </Segment>
 )
