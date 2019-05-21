@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Header, Modal, Form,  Divider, Grid, Segment } from 'semantic-ui-react';
-import 'semantic-ui-css/semantic.min.css';
+
 
 const modal = () => (
   <Modal trigger={<Button>SAD NEW CONTACT</Button>} closeIcon>
