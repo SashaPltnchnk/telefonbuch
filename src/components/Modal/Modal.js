@@ -3,6 +3,33 @@ import { Button, Header, Modal, Form,  Divider, Grid, Segment } from 'semantic-u
 import { connect } from 'react-redux';
 import { createContact } from '../../store/actions/contacts';
 
+const inputs = [
+    {
+        label: 'Company',
+        name: 'company',
+        placeholder: 'Company'
+    },
+    {
+        label: 'Phone',
+        name: 'phone',
+        placeholder: 'Phone'
+    },
+    {
+        label: 'Name',
+        name: 'name',
+        placeholder: 'Name'
+    },
+    {
+        label: 'Surname',
+        name: 'surname',
+        placeholder: 'Surname'
+    },
+    {
+        label: 'Mail',
+        name: 'mail',
+        placeholder: 'Mail'
+    },
+]
 
 class ModalContact extends Component {
     state = {
@@ -17,11 +44,20 @@ class ModalContact extends Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-        this.props.createContact();
+        this.props.createContact(this.state.form);
     }
 
     changeInputHandler = (e) => {
-
+        const {name, value } = e.target
+        this.setState((state) => {
+            return {
+                ...state,
+                form: {
+                    ...state.form,
+                    [name]: value
+                }
+            }
+        })
     }
 
     render () {
@@ -30,32 +66,26 @@ class ModalContact extends Component {
                 <Header icon='phone' content='Miu miu' />
                 <Modal.Content>
                     <Segment>
-                        <Grid columns={2} relaxed='very'>
+                     <Grid columns={2} relaxed='very'>
                             <Grid.Column>
                                 it's a place for uploading images
                             </Grid.Column>
                             <Grid.Column>
                                 <Form onSubmit={this.submitHandler}>
-                                    <Form.Field>
-                                        <label>Phone Number</label>
-                                        <input placeholder='Phone Number' name='phone' onChange={this.changeInputHandler} />
+                                {inputs.map(input => {
+                                    return (
+
+                                    <Form.Field key={input.name}>
+                                        <label>{input.label}</label>
+                                        <input 
+                                            placeholder={input.placeholder} 
+                                            name={input.name} 
+                                            value={this.state.form[input.name]} 
+                                            onChange={this.changeInputHandler} 
+                                        />
                                     </Form.Field>
-                                    <Form.Field>
-                                        <label>First Name</label>
-                                        <input placeholder='First Name' name='name' onChange={this.changeInputHandler} />
-                                    </Form.Field>
-                                    <Form.Field>
-                                        <label>Last Name</label>
-                                        <input placeholder='Last Name' name='surname' onChange={this.changeInputHandler} />
-                                    </Form.Field>
-                                    <Form.Field>
-                                        <label>Email</label>
-                                        <input placeholder='Email' name='mail' onChange={this.changeInputHandler} />
-                                    </Form.Field>
-                                    <Form.Field>
-                                        <label>Company</label>
-                                        <input placeholder='Company' name='company' onChange={this.changeInputHandler} />
-                                    </Form.Field>
+                                    )
+                                })}
                                     {/* <Button color='purple' type='submit'>Submit</Button> */}
                                 </Form>
                             </Grid.Column>

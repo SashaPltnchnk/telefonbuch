@@ -16,26 +16,18 @@ const CardStyled = styled(Card)`
     padding: 20px;
 `
 
-const contactSummary = () => (
+const contactSummary = (props) => (
   <CardStyled style={{padding: 20}}>
     <Image src={imagys} wrapped ui={false} />
     <Card.Content>
-      <Card.Header>SAD GIRLS CLUB</Card.Header>
-      <Card.Meta>+38066 666 66 66</Card.Meta>
-      <Card.Description>
-        test@test.com
-      </Card.Description>
+      <Card.Header>{props.name} {props.surname}</Card.Header>
+      <Card.Meta>{props.phone}</Card.Meta>
+      <Card.Description>{props.mail}</Card.Description>
       <Card.Description>
         <Icon name='user' />
-        Company
+        {props.company}
       </Card.Description>
     </Card.Content>
-    {/* <Card.Content extra>
-      <a>
-        <Icon name='user' />
-        10 Friends
-      </a>
-    </Card.Content> */}
   </CardStyled>
 )
 

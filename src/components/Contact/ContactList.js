@@ -7,12 +7,17 @@ import { fetchContacts } from '../../store/actions/contacts';
 
 class ContactList extends Component {
 
+  componentDidMount() {
+    this.props.fetchContacts();
+
+  }
+
   render() {
-    console.log(this.props.fetchContacts())
     return (
-      <div>
-        
-        
+      <div> 
+        {this.props.contacts.map(contact => (
+          <ContactSummary key={contact.id} {...contact}/>
+        ))}
       </div>
     )
   }
@@ -21,4 +26,4 @@ class ContactList extends Component {
 
 
 
-export default connect(null, {fetchContacts})(ContactList);
+export default connect((store) => ({contacts: store.contacts}), {fetchContacts})(ContactList);
