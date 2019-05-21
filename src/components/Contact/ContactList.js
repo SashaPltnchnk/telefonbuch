@@ -26,4 +26,4 @@ class ContactList extends Component {
 
 
 
-export default connect((store) => ({contacts: store.contacts}), {fetchContacts})(ContactList);
+export default connect((store) => ({contacts: store.contact.contacts}), {fetchContacts})(ContactList);

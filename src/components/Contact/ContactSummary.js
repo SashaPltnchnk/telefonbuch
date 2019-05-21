@@ -1,7 +1,9 @@
 import React from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react';
 import imagys from '../../assets/math.jpg';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { deleteContact, fetchContacts } from '../../store/actions/contacts';
 
 // const Wrapper = styled.div`
 //     width: ${pr => pr.width}px;
@@ -12,12 +14,18 @@ import styled from 'styled-components'
     
 // `
 
-const CardStyled = styled(Card)`
-    padding: 20px;
-`
+// const CardStyled = styled(Card)`
+//     padding: 20px;
+// `
 
-const contactSummary = (props) => (
-  <CardStyled style={{padding: 20}}>
+const contactSummary = (props) => {
+  const deleteContact = () => {
+    props.deleteContact(props.id)
+      .then(() => {props.fetchContacts()});
+  }
+  return (
+    <Card style={{padding: 20}} color='teal'>
+    <Icon name='close' color='red' size='large' onClick={deleteContact} link />
     <Image src={imagys} wrapped ui={false} />
     <Card.Content>
       <Card.Header>{props.name} {props.surname}</Card.Header>
@@ -28,7 +36,8 @@ const contactSummary = (props) => (
         {props.company}
       </Card.Description>
     </Card.Content>
-  </CardStyled>
-)
+  </Card>
+  )
+  }
 
-export default contactSummary;
+export default connect(null, {deleteContact, fetchContacts})(contactSummary);

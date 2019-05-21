@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Button, Header, Modal, Form,  Divider, Grid, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { createContact } from '../../store/actions/contacts';
+import { closeModal, openModal } from '../../store/actions/modal';
+import { fetchContacts } from '../../store/actions/contacts';
 
 const inputs = [
     {
@@ -44,7 +46,10 @@ class ModalContact extends Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-        this.props.createContact(this.state.form);
+        this.props.createContact(this.state.form)
+            .then(() => {this.props.closeModal()})
+                .then(() => {this.props.fetchContacts()})
+        
     }
 
     changeInputHandler = (e) => {
@@ -62,8 +67,7 @@ class ModalContact extends Component {
 
     render () {
         return (
-            <Modal trigger={<Button>SAD NEW CONTACT</Button>} closeIcon>
-                <Header icon='phone' content='Miu miu' />
+            <Modal open={this.props.isModalOpen} trigger={<Button onClick={() => {this.props.openModal()}}>SAD NEW CONTACT</Button>} closeIcon>
                 <Modal.Content>
                     <Segment>
                      <Grid columns={2} relaxed='very'>
@@ -86,20 +90,17 @@ class ModalContact extends Component {
                                     </Form.Field>
                                     )
                                 })}
-                                    {/* <Button color='purple' type='submit'>Submit</Button> */}
+                                    <Button color='purple' type='submit'>Submit</Button>
                                 </Form>
                             </Grid.Column>
                         </Grid>
                     </Segment>
                     <Divider vertical>And</Divider>
                 </Modal.Content>
-                <Modal.Actions>
-                    <Button color='purple' type='submit' onClick={this.submitHandler}>Submit</Button>
-                </Modal.Actions>
             </Modal>
         )
     }
 }
 
 
-export default connect(null, {createContact})(ModalContact);
+export default connect((store) => ({isModalOpen: store.modal.isModalOpen}), {createContact, closeModal, openModal, fetchContacts})(ModalContact);

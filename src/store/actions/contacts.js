@@ -1,7 +1,6 @@
-
-
 export const FETCH_CONTACTS = 'FETCH_CONTACTS';
 export const CREATE_CONTACT = 'CREATE_CONTACT';
+export const DELETE_CONTACT = 'DELETE_CONTACT';
 
 export const fetchContacts = () => ({
     type: FETCH_CONTACTS,
@@ -17,5 +16,19 @@ export const createContact = (data) => ({
         url: '/contacts/',
         method: 'POST',
         data
+    },
+    meta: {
+        asPromise: true
     }
 });
+
+export const deleteContact = (id) => ({
+    type: DELETE_CONTACT,
+    request: {
+        url: `/contacts/${id}`,
+        method: 'DELETE'
+    },
+    meta: {
+        asPromise: true
+    }
+})

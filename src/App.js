@@ -1,7 +1,6 @@
 import React from 'react';
 // import Modal from './components/Modal/Modal';
 // import SearchInput from './components/SearchInput/SearchInput';
-import ContactSummary from './components/Contact/ContactSummary';
 import ContactList from './components/Contact/ContactList';
 import Header from './components/Header/Header';
 import 'semantic-ui-css/semantic.min.css';
@@ -13,10 +12,9 @@ function App() {
       <Header />
       {/* <SearchInput /> */}
       {/* <Modal /> */}
-      <Container textAlign='justified'>
-        <ContactSummary />
+      {/* <Container textAlign='justified'> */}
         <ContactList />
-      </Container>
+      {/* </Container> */}
     </div>
   );
 }
