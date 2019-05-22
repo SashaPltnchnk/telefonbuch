@@ -1,37 +1,37 @@
 import React, { Component } from 'react';
-import { Button, Header, Modal, Form,  Divider, Grid, Segment } from 'semantic-ui-react';
+import { Button, Header, Modal,  Divider, Grid, Segment, Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { createContact } from '../../store/actions/contacts';
+import { createContact, fetchContacts } from '../../store/actions/contacts';
 import { closeModal, openModal } from '../../store/actions/modal';
-import { fetchContacts } from '../../store/actions/contacts';
+import Form from './Form/Form';
 
-const inputs = [
-    {
-        label: 'Company',
-        name: 'company',
-        placeholder: 'Company'
-    },
-    {
-        label: 'Phone',
-        name: 'phone',
-        placeholder: 'Phone'
-    },
-    {
-        label: 'Name',
-        name: 'name',
-        placeholder: 'Name'
-    },
-    {
-        label: 'Surname',
-        name: 'surname',
-        placeholder: 'Surname'
-    },
-    {
-        label: 'Mail',
-        name: 'mail',
-        placeholder: 'Mail'
-    },
-]
+// const inputs = [
+//     {
+//         label: 'Company',
+//         name: 'company',
+//         placeholder: 'Company'
+//     },
+//     {
+//         label: 'Phone',
+//         name: 'phone',
+//         placeholder: 'Phone'
+//     },
+//     {
+//         label: 'Name',
+//         name: 'name',
+//         placeholder: 'Name'
+//     },
+//     {
+//         label: 'Surname',
+//         name: 'surname',
+//         placeholder: 'Surname'
+//     },
+//     {
+//         label: 'Mail',
+//         name: 'mail',
+//         placeholder: 'Mail'
+//     },
+// ]
 
 class ModalContact extends Component {
     state = {
@@ -66,8 +66,22 @@ class ModalContact extends Component {
     }
 
     render () {
+        // console.log(props)
         return (
-            <Modal open={this.props.isModalOpen} trigger={<Button onClick={() => {this.props.openModal()}}>SAD NEW CONTACT</Button>} closeIcon>
+            <Modal 
+                open={this.props.isModalOpen} 
+                // trigger={<Button 
+                //     onClick={() => {this.props.openModal()}}>SAD NEW CONTACT</Button>} 
+                // closeIcon
+                >
+                <Modal.Header>
+                    <Icon 
+                        name='close' 
+                        color='red' 
+                        size='large' 
+                        link
+                        onClick={() => {this.props.closeModal()}}/>
+                </Modal.Header>
                 <Modal.Content>
                     <Segment>
                      <Grid columns={2} relaxed='very'>
@@ -75,7 +89,12 @@ class ModalContact extends Component {
                                 it's a place for uploading images
                             </Grid.Column>
                             <Grid.Column>
-                                <Form onSubmit={this.submitHandler}>
+                                <Form 
+                                    submitHandler={this.submitHandler}
+                                    changeInputHandler={this.changeInputHandler}
+                                    form={this.state.form}
+                                    />
+                                {/* <Form onSubmit={this.submitHandler}>
                                 {inputs.map(input => {
                                     return (
 
@@ -90,8 +109,8 @@ class ModalContact extends Component {
                                     </Form.Field>
                                     )
                                 })}
-                                    <Button color='purple' type='submit'>Submit</Button>
-                                </Form>
+                                    <Button color='purple' type='submit'>Save new contact</Button>
+                                </Form> */}
                             </Grid.Column>
                         </Grid>
                     </Segment>

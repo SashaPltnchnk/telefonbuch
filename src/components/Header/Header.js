@@ -1,7 +1,9 @@
 import React from 'react';
 import SearchInput from '../SearchInput/SearchInput';
 import ModalContact from '../Modal/Modal';
-import { Header, Segment } from 'semantic-ui-react';
+import { Button, Header, Segment, ModalContent } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { openModal } from '../../store/actions/modal';
 
 
 // const styledHeader = {
@@ -9,15 +11,18 @@ import { Header, Segment } from 'semantic-ui-react';
 //     padding: '30px'
 // }
 
-const header = () => (
-   
-  <Segment inverted>
-    <Header as='h4' inverted color='teal' size='tiny' >
-        <SearchInput />
-      Phone book
-        <ModalContact />
-    </Header>
-  </Segment>
-)
+const header = (props) => {
+  const modal =  props.isModalOpen ? <ModalContact /> : null;
+  return (
+    <Segment inverted>
+      <Header as='h4' inverted color='teal' size='tiny' >
+          <SearchInput />
+        Phone book
+            <Button onClick={() => {props.openModal()}}>SAD NEW CONTACT</Button>
+            {modal}
+      </Header>
+    </Segment>
+  )
+}
 
-export default header;
+export default connect((store) => ({isModalOpen: store.modal.isModalOpen}), {openModal})(header);

@@ -4,6 +4,7 @@ import imagys from '../../assets/math.jpg';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { deleteContact, fetchContacts } from '../../store/actions/contacts';
+// import { openModal } from '../../store/actions/modal';
 
 // const Wrapper = styled.div`
 //     width: ${pr => pr.width}px;
@@ -19,12 +20,14 @@ import { deleteContact, fetchContacts } from '../../store/actions/contacts';
 // `
 
 const contactSummary = (props) => {
+  
   const deleteContact = () => {
     props.deleteContact(props.id)
       .then(() => {props.fetchContacts()});
   }
   return (
     <Card style={{padding: 20}} color='teal'>
+    <Icon name='pencil alternate' color='orange' size='large' link />
     <Icon name='close' color='red' size='large' onClick={deleteContact} link />
     <Image src={imagys} wrapped ui={false} />
     <Card.Content>

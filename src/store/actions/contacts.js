@@ -1,6 +1,7 @@
 export const FETCH_CONTACTS = 'FETCH_CONTACTS';
 export const CREATE_CONTACT = 'CREATE_CONTACT';
 export const DELETE_CONTACT = 'DELETE_CONTACT';
+export const UPDATE_CONTACT = 'UPDATE_CONTACT';
 
 export const fetchContacts = () => ({
     type: FETCH_CONTACTS,
@@ -31,4 +32,15 @@ export const deleteContact = (id) => ({
     meta: {
         asPromise: true
     }
-})
+});
+
+export const updateContact = (id) => ({
+    type: UPDATE_CONTACT,
+    request: {
+        url: `/contacts/${id}`,
+        method: 'PUT'
+    },
+    meta: {
+        asPromise: true
+    }
+});
