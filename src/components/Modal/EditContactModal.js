@@ -18,7 +18,6 @@ class EditContactModal extends Component {
     }
 
     componentDidMount() {
-        // вызывается тут и форм андефайнед летит
             this.setState(state => ({
                 ...state, 
                 form: this.props.contacts.find(contact => contact._id === this.props.id)

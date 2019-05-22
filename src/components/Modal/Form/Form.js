@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button,  Form } from 'semantic-ui-react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 
 const FormQ = (props) => {
@@ -51,7 +51,7 @@ console.warn(props.form);
                 </Form.Field>
                 )
             })}
-                <Button color='purple' type='submit' onClick={props.buttonEvent}>{props.buttonText}</Button>
+                <Button color='purple'>{props.buttonText}</Button>
         </Form>
     )
 }

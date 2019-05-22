@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react';
 import imagys from '../../assets/math.jpg';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { deleteContact, fetchContacts } from '../../store/actions/contacts';
 import { editContactOpenModal } from '../../store/actions/modal';

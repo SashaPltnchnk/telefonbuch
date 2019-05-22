@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchInput from '../SearchInput/SearchInput';
 import AddContactModal from '../Modal/AddContactModal';
-import { Button, Header, Segment, ModalContent } from 'semantic-ui-react';
+import { Button, Header, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { addContactOpenModal } from '../../store/actions/modal';
 
