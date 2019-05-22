@@ -4,7 +4,8 @@ import imagys from '../../assets/math.jpg';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { deleteContact, fetchContacts } from '../../store/actions/contacts';
-// import { openModal } from '../../store/actions/modal';
+import { editContactOpenModal } from '../../store/actions/modal';
+import EditContactModal from '../Modal/EditContactModal';
 
 // const Wrapper = styled.div`
 //     width: ${pr => pr.width}px;
@@ -20,27 +21,30 @@ import { deleteContact, fetchContacts } from '../../store/actions/contacts';
 // `
 
 const contactSummary = (props) => {
-  
+
   const deleteContact = () => {
     props.deleteContact(props.id)
       .then(() => {props.fetchContacts()});
   }
+
+  const modal =  props.isModalOpen ? <EditContactModal /> : null;
+
   return (
     <Card style={{padding: 20}} color='teal'>
-    <Icon name='pencil alternate' color='orange' size='large' link />
-    <Icon name='close' color='red' size='large' onClick={deleteContact} link />
-    <Image src={imagys} wrapped ui={false} />
-    <Card.Content>
-      <Card.Header>{props.name} {props.surname}</Card.Header>
-      <Card.Meta>{props.phone}</Card.Meta>
-      <Card.Description>{props.mail}</Card.Description>
-      <Card.Description>
-        <Icon name='user' />
-        {props.company}
-      </Card.Description>
-    </Card.Content>
-  </Card>
+        <Icon name='pencil alternate' color='orange' size='large' link onClick={() => {props.editContactOpenModal(props.id)}}/>
+        {modal}
+        <Icon name='close' color='red' size='large' onClick={deleteContact} link />
+        <Image src={imagys} wrapped ui={false} />
+        <Card.Content>
+            <Card.Header>{props.name} {props.surname}</Card.Header>
+            <Card.Meta>{props.phone}</Card.Meta>
+            <Card.Description>{props.mail}</Card.Description>
+            <Card.Description>
+                <Icon name='user' />{props.company} 
+            </Card.Description>
+        </Card.Content>
+    </Card>
   )
   }
 
-export default connect(null, {deleteContact, fetchContacts})(contactSummary);
+export default connect((store) => ({isModalOpen: store.modal.isEditContactModalOpen}), {deleteContact, fetchContacts, editContactOpenModal})(contactSummary);

@@ -1,16 +1,11 @@
 import React from 'react';
 import { Button,  Form } from 'semantic-ui-react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
 
-const form = (props) => {
+const FormQ = (props) => {
 
     const inputs = [
-        {
-            label: 'Company',
-            name: 'company',
-            placeholder: 'Company'
-        },
         {
             label: 'Phone',
             name: 'phone',
@@ -31,11 +26,18 @@ const form = (props) => {
             name: 'mail',
             placeholder: 'Mail'
         },
+        {
+            label: 'Company',
+            name: 'company',
+            placeholder: 'Company'
+        }
     ]
+console.warn(props.form);
 
     return (
         <Form onSubmit={props.submitHandler}>
             {inputs.map(input => {
+                // debugger
                 return (
 
                 <Form.Field key={input.name}>
@@ -49,9 +51,10 @@ const form = (props) => {
                 </Form.Field>
                 )
             })}
-                <Button color='purple' type='submit'>Save new contact</Button>
+                <Button color='purple' type='submit' onClick={props.buttonEvent}>{props.buttonText}</Button>
         </Form>
     )
 }
 
-export default form;
+//export default connect(null)(FormQ);
+export default FormQ

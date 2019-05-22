@@ -1,9 +1,9 @@
 import React from 'react';
 import SearchInput from '../SearchInput/SearchInput';
-import ModalContact from '../Modal/Modal';
+import AddContactModal from '../Modal/AddContactModal';
 import { Button, Header, Segment, ModalContent } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { openModal } from '../../store/actions/modal';
+import { addContactOpenModal } from '../../store/actions/modal';
 
 
 // const styledHeader = {
@@ -11,18 +11,20 @@ import { openModal } from '../../store/actions/modal';
 //     padding: '30px'
 // }
 
-const header = (props) => {
-  const modal =  props.isModalOpen ? <ModalContact /> : null;
+const HeaderQ = (props) => {
+  const modal =  props.isModalOpen ? <AddContactModal /> : null;
+  // console.warn(modal);
+  
   return (
     <Segment inverted>
       <Header as='h4' inverted color='teal' size='tiny' >
           <SearchInput />
         Phone book
-            <Button onClick={() => {props.openModal()}}>SAD NEW CONTACT</Button>
+            <Button onClick={() => {props.addContactOpenModal()}}>SAD NEW CONTACT</Button>
             {modal}
       </Header>
     </Segment>
   )
 }
 
-export default connect((store) => ({isModalOpen: store.modal.isModalOpen}), {openModal})(header);
+export default connect((store) => ({isModalOpen: store.modal.isAddContactModalOpen}), {addContactOpenModal})(HeaderQ);

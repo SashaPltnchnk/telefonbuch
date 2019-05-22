@@ -13,6 +13,7 @@ class ContactList extends Component {
   }
 
   render() {
+    // debugger
     return (
       <div> 
         {this.props.contacts.map(contact => (

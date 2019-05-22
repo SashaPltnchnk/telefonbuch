@@ -1,20 +1,35 @@
 import * as actionTypes from '../actions/modal';
 
 const initialState = {
-    isModalOpen: false
+    isAddContactModalOpen: false,
+    isEditContactModalOpen: false,
+    id: null
 }
 
 const modal = (state = initialState, action) => {
     switch(action.type) {  
-        case actionTypes.CLOSE_MODAL: 
+        case actionTypes.ADD_CONTACT_CLOSE_MODAL: 
             return {
                 ...state,
-                isModalOpen: false
+                isAddContactModalOpen: false
             }
-        case actionTypes.OPEN_MODAL:
+        case actionTypes.ADD_CONTACT_OPEN_MODAL:
             return {
                 ...state,
-                isModalOpen: true
+                isAddContactModalOpen: true,
+                isEditContactModalOpen: false
+            }
+        case actionTypes.EDIT_CONTACT_CLOSE_MODAL:
+            return {
+                ...state,
+                isEditContactModalOpen: false
+            }
+        case actionTypes.EDIT_CONTACT_OPEN_MODAL:
+            return {
+                ...state,
+                isEditContactModalOpen: true,
+                isAddContactModalOpen: false,
+                id: action.id
             }
         default: return state;
     }  
