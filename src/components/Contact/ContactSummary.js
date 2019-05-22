@@ -34,7 +34,7 @@ const contactSummary = (props) => {
         <Icon name='pencil alternate' color='orange' size='large' link onClick={() => {props.editContactOpenModal(props.id)}}/>
         {modal}
         <Icon name='close' color='red' size='large' onClick={deleteContact} link />
-        <Image src={imagys} wrapped ui={false} />
+        <Image src={props.selectedFile} wrapped ui={false} />
         <Card.Content>
             <Card.Header>{props.name} {props.surname}</Card.Header>
             <Card.Meta>{props.phone}</Card.Meta>
