@@ -51,7 +51,14 @@ console.warn(props.form);
                 </Form.Field>
                 )
             })}
-                <Button color='purple'>{props.buttonText}</Button>
+                <Button 
+                     disabled={ !props.form.phone
+                        || !props.form.name
+                        || !props.form.surname
+                        || !props.form.mail
+                        || !props.form.company
+                    }
+                    color='purple'>{props.buttonText}</Button>
         </Form>
     )
 }

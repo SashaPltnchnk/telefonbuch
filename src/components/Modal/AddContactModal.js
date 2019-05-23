@@ -48,7 +48,7 @@ class AddContactModal extends Component {
     fileChangedHandler = e => {
         
         // const formData = new FormData()
-        // formData.append('asd', e.target.files[0])
+        // formData.append('asd', e.target.files[0]) 
         
          const file = URL.createObjectURL(e.target.files[0])
          const reader = new FileReader()
@@ -72,22 +72,22 @@ class AddContactModal extends Component {
          reader.readAsDataURL(e.target.files[0])
     }
 
-    // uploadHandler = () => {
-    //     console.log(this.state.form.selectedFile)
-    //     const formData = new FormData()
-    //     formData.append(
-    //       'myFile',
-    //       this.state.form.selectedFile,
-    //       this.state.form.selectedFile.name
-    //     )
-    //     axios.post('http://localhost:8000/api/contacts/', formData)
-    //         .then(res => {
-    //             console.log(res);
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //         })
-    //   }
+    uploadHandler = () => {
+        console.log(this.state.form.selectedFile)
+        const formData = new FormData()
+        formData.append(
+          'myFile',
+          this.state.form.selectedFile,
+          this.state.form.selectedFile.name
+        )
+        // axios.post('http://localhost:8000/api/contacts/', formData)
+        //     .then(res => {
+        //         console.log(res);
+        //     })
+        //     .catch(err => {
+        //         console.log(err)
+        //     })
+      }
 
     render () {
         
@@ -106,8 +106,8 @@ class AddContactModal extends Component {
                     <Segment>
                      <Grid columns={2} relaxed='very'>
                             <Grid.Column>
-                                {/* <img src={this.state.form.selectedFile} alt="avatar" className="ui medium rounded image"></img>
-                                <input type="file" name="file" onChange={this.fileChangedHandler} /> */}
+                                <img src={this.state.form.selectedFile} alt="avatar" className="ui medium rounded image"></img>
+                                <input type="file" name="file" onChange={this.fileChangedHandler} />
   {/* не нужно точно: */}
                                 {/* <button onClick={this.uploadHandler}>Upload!</button> */}
                             </Grid.Column>
