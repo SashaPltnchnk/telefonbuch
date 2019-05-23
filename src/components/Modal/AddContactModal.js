@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Modal, Divider, Grid, Segment, Icon } from 'semantic-ui-react';
+import { Modal, Divider, Grid, Segment, Icon, Message } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { createContact, fetchContacts } from '../../store/actions/contacts';
 import { addContactCloseModal, addContactOpenModal } from '../../store/actions/modal';
 import Form from './Form/Form';
-import axios from 'axios';
+// import Form from './Form/FormValidation';
 
 
 class AddContactModal extends Component {
@@ -50,7 +50,7 @@ class AddContactModal extends Component {
         // const formData = new FormData()
         // formData.append('asd', e.target.files[0]) 
         
-         const file = URL.createObjectURL(e.target.files[0])
+        //  const file = URL.createObjectURL(e.target.files[0])
          const reader = new FileReader()
 
          
@@ -80,36 +80,32 @@ class AddContactModal extends Component {
           this.state.form.selectedFile,
           this.state.form.selectedFile.name
         )
-        // axios.post('http://localhost:8000/api/contacts/', formData)
-        //     .then(res => {
-        //         console.log(res);
-        //     })
-        //     .catch(err => {
-        //         console.log(err)
-        //     })
       }
 
     render () {
+        const contactImage = this.state.form.selectedFile ? 
+            <img src={this.state.form.selectedFile} alt="userImage" className="ui medium rounded image"></img>
+            : <Message>
+                <Message.Header>Please choose image</Message.Header>
+            </Message>
+            
         
         console.warn(this.state.form)
            return (
             <Modal open={this.props.isModalOpen}>
-                <Modal.Header>
-                    <Icon 
-                        name='close' 
-                        color='red' 
-                        size='large' 
-                        link
-                        onClick={() => {this.props.addContactCloseModal()}}/>
-                </Modal.Header>
+                <Icon 
+                    name='close' 
+                    color='red' 
+                    size='huge' 
+                    link
+                    
+                    onClick={() => {this.props.addContactCloseModal()}}/>
                 <Modal.Content>
                     <Segment>
                      <Grid columns={2} relaxed='very'>
                             <Grid.Column>
-                                <img src={this.state.form.selectedFile} alt="avatar" className="ui medium rounded image"></img>
+                                {contactImage}
                                 <input type="file" name="file" onChange={this.fileChangedHandler} />
-  {/* не нужно точно: */}
-                                {/* <button onClick={this.uploadHandler}>Upload!</button> */}
                             </Grid.Column>
                             <Grid.Column>
                                 <Form 

@@ -4,6 +4,7 @@ import AddContactModal from '../Modal/AddContactModal';
 import { Button, Header, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { addContactOpenModal } from '../../store/actions/modal';
+import classes from '../../App.module.css';
 
 
 // const styledHeader = {
@@ -16,14 +17,16 @@ const HeaderQ = (props) => {
   // console.warn(modal);
   
   return (
-    <Segment inverted>
-      <Header as='h4' inverted color='teal' size='tiny' >
-          <SearchInput />
-        Phone book
-            <Button onClick={() => {props.addContactOpenModal()}}>SAD NEW CONTACT</Button>
-            {modal}
-      </Header>
-    </Segment>
+    <header className={classes.Header}>  
+        <Button onClick={() => {props.addContactOpenModal()}}
+                basic 
+                inverted 
+                // color='olive'
+                >ADD NEW CONTACT</Button>
+        {modal}
+        <Header as='h1' color='teal' size='medium' >Phone book </Header> 
+        <SearchInput />
+    </header>
   )
 }
 

@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { fetchContacts, editContact } from '../../store/actions/contacts';
 import { editContactCloseModal } from '../../store/actions/modal';
 import Form from './Form/Form';
+// import Form from './Form/FormValidation';
+
 
 
 class EditContactModal extends Component {
@@ -53,6 +55,36 @@ class EditContactModal extends Component {
         this.editContact();
     }
 
+    fileChangedHandler = e => {
+                
+        //  const file = URL.createObjectURL(e.target.files[0])
+         const reader = new FileReader()
+
+         reader.onload  = () => {
+            //  debugger
+            this.setState(state => {
+                return {
+                    ...state,
+                    form: {
+                        ...state.form,
+                        selectedFile: reader.result
+                    }
+                }
+            })
+         }
+         reader.readAsDataURL(e.target.files[0])
+    }
+
+    uploadHandler = () => {
+        console.log(this.state.form.selectedFile)
+        const formData = new FormData()
+        formData.append(
+          'myFile',
+          this.state.form.selectedFile,
+          this.state.form.selectedFile.name
+        )
+      }
+
 
     render () {
         // console.log(props)
@@ -60,19 +92,21 @@ class EditContactModal extends Component {
         // console.log(this.state.form.selectedFile)
         return (
             <Modal open={this.props.isModalOpen}>
-                <Modal.Header>
-                    <Icon 
-                        name='close' 
-                        color='red' 
-                        size='large' 
-                        link
-                        onClick={() => {this.props.editContactCloseModal()}}/>
-                </Modal.Header>
+                <Icon 
+                    name='close' 
+                    color='red' 
+                    size='large' 
+                    link
+                    onClick={() => {this.props.editContactCloseModal()}}/>
                 <Modal.Content>
                     <Segment>
                      <Grid columns={2} relaxed='very'>
                             <Grid.Column>
                                 <Image src={this.state.form.selectedFile} wrapped ui={true} />
+                                
+                                <Divider horizontal>or</Divider>
+
+                                <input type="file" name="file" onChange={this.fileChangedHandler} />
                             </Grid.Column>
                             <Grid.Column>
                                 <Form 

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react';
-import imagys from '../../assets/math.jpg';
+import { Icon, Image, List } from 'semantic-ui-react';
 // import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { deleteContact, fetchContacts } from '../../store/actions/contacts';
 import { editContactOpenModal } from '../../store/actions/modal';
 import EditContactModal from '../Modal/EditContactModal';
+import { img } from '../../assets/images.png'
 
 // const Wrapper = styled.div`
 //     width: ${pr => pr.width}px;
@@ -29,21 +29,42 @@ const contactSummary = (props) => {
 
   const modal =  props.isModalOpen ? <EditContactModal /> : null;
 
+//   const image = props.selectedFile ? <Image src={props.selectedFile} wrapped ui={false} /> : <Image src={img} wrapped ui={false} />
+
   return (
-    <Card style={{padding: 20}} color='teal'>
-        <Icon name='pencil alternate' color='orange' size='large' link onClick={() => {props.editContactOpenModal(props.id)}}/>
-        {modal}
-        <Icon name='close' color='red' size='large' onClick={deleteContact} link />
-        <Image src={props.selectedFile} wrapped ui={false} />
-        <Card.Content>
-            <Card.Header>{props.name} {props.surname}</Card.Header>
-            <Card.Meta>{props.phone}</Card.Meta>
-            <Card.Description>{props.mail}</Card.Description>
-            <Card.Description>
-                <Icon name='user' />{props.company} 
-            </Card.Description>
-        </Card.Content>
-    </Card>
+    <List selection verticalAlign='middle'>
+        <List.Item>
+            <List.Content floated='right'>
+                <List.Header as='a'>
+                    <Icon 
+                        name='close' 
+                        color='red' 
+                        size='large' 
+                        onClick={deleteContact} 
+                        link />
+                </List.Header>
+                <List.Description>
+                    <Icon 
+                        name='pencil alternate' 
+                        color='orange' 
+                        size='large' 
+                        link 
+                        onClick={() => {props.editContactOpenModal(props.id)}}/>
+
+                    {modal}
+                </List.Description>
+            </List.Content>
+        <Image avatar src={props.selectedFile} size='small' />
+        <List.Content>
+            <List.Header as='a'>{props.name} {props.surname}</List.Header>
+            <List.Description>
+                <div>{props.phone}</div>
+                <div>{props.mail}</div>
+                <div>{props.company}</div>
+            </List.Description>
+        </List.Content>
+        </List.Item>
+    </List>
   )
   }
 

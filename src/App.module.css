@@ -1,0 +1,22 @@
+.Header {
+    background-color: black;
+    padding: 10px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* color: teal; */
+}
+
+.ui.card:first-child {
+    margin-top: 1em;
+}
+.ContactWrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+
+.ContactWrapper:first-child {
+    margin-top: 1em;
+}

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button,  Form } from 'semantic-ui-react';
-// import { connect } from 'react-redux';
 
 
 const FormQ = (props) => {
@@ -52,16 +51,17 @@ const FormQ = (props) => {
                 )
             })}
                 <Button 
-                    //  disabled={ !props.form.phone
-                    //     || !props.form.name
-                    //     || !props.form.surname
-                    //     || !props.form.mail
-                    //     || !props.form.company
-                    // }
-                    color='purple'>{props.buttonText}</Button>
+                     disabled={ !props.form.phone
+                        || !props.form.name
+                        || !props.form.surname
+                        || !props.form.mail
+                        || !props.form.company
+                        || !props.form.selectedFile
+                    }
+                    color='teal'>{props.buttonText}</Button>
         </Form>
     )
 }
 
-//export default connect(null)(FormQ);
+
 export default FormQ
