@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Divider, Grid, Segment, Icon } from 'semantic-ui-react';
+import { Modal, Divider, Grid, Segment, Icon, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { fetchContacts, editContact } from '../../store/actions/contacts';
 import { editContactCloseModal } from '../../store/actions/modal';
@@ -13,7 +13,8 @@ class EditContactModal extends Component {
             surname: '',
             phone: '',
             mail: '',
-            company: ''
+            company: '',
+            selectedFile: ''
         }
     }
 
@@ -56,7 +57,7 @@ class EditContactModal extends Component {
     render () {
         // console.log(props)
         // debugger
-        console.warn(this.state.form)
+        // console.log(this.state.form.selectedFile)
         return (
             <Modal open={this.props.isModalOpen}>
                 <Modal.Header>
@@ -71,7 +72,7 @@ class EditContactModal extends Component {
                     <Segment>
                      <Grid columns={2} relaxed='very'>
                             <Grid.Column>
-                                it's a place for uploading images
+                                <Image src={this.state.form.selectedFile} wrapped ui={true} />
                             </Grid.Column>
                             <Grid.Column>
                                 <Form 

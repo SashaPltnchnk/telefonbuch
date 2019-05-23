@@ -32,7 +32,7 @@ const FormQ = (props) => {
             placeholder: 'Company'
         }
     ]
-console.warn(props.form);
+// console.warn(props.form);
 
     return (
         <Form onSubmit={props.submitHandler}>
@@ -52,12 +52,12 @@ console.warn(props.form);
                 )
             })}
                 <Button 
-                     disabled={ !props.form.phone
-                        || !props.form.name
-                        || !props.form.surname
-                        || !props.form.mail
-                        || !props.form.company
-                    }
+                    //  disabled={ !props.form.phone
+                    //     || !props.form.name
+                    //     || !props.form.surname
+                    //     || !props.form.mail
+                    //     || !props.form.company
+                    // }
                     color='purple'>{props.buttonText}</Button>
         </Form>
     )
