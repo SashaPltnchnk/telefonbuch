@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { deleteContact, fetchContacts } from '../../store/actions/contacts';
 import { editContactOpenModal } from '../../store/actions/modal';
 import EditContactModal from '../Modal/EditContactModal';
-import { img } from '../../assets/images.png'
+// import { img } from '../../assets/images.png'
 
 // const Wrapper = styled.div`
 //     width: ${pr => pr.width}px;
@@ -28,6 +28,10 @@ const contactSummary = (props) => {
   }
 
   const modal =  props.isModalOpen ? <EditContactModal /> : null;
+
+  const nameStyle = {
+      textTransform: 'capitalize'
+  };
 
 //   const image = props.selectedFile ? <Image src={props.selectedFile} wrapped ui={false} /> : <Image src={img} wrapped ui={false} />
 
@@ -56,7 +60,7 @@ const contactSummary = (props) => {
             </List.Content>
         <Image avatar src={props.selectedFile} size='small' />
         <List.Content>
-            <List.Header as='a'>{props.name} {props.surname}</List.Header>
+            <List.Header as='a' style={nameStyle}>{props.name} {props.surname}</List.Header>
             <List.Description>
                 <div>{props.phone}</div>
                 <div>{props.mail}</div>

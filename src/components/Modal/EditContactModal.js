@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { fetchContacts, editContact } from '../../store/actions/contacts';
 import { editContactCloseModal } from '../../store/actions/modal';
 import Form from './Form/Form';
-// import Form from './Form/FormValidation';
 
 
 
@@ -87,9 +86,6 @@ class EditContactModal extends Component {
 
 
     render () {
-        // console.log(props)
-        // debugger
-        // console.log(this.state.form.selectedFile)
         return (
             <Modal open={this.props.isModalOpen}>
                 <Icon 

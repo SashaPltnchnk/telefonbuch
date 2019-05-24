@@ -3,8 +3,7 @@ import { Modal, Divider, Grid, Segment, Icon, Message, Image } from 'semantic-ui
 import { connect } from 'react-redux';
 import { createContact, fetchContacts } from '../../store/actions/contacts';
 import { addContactCloseModal, addContactOpenModal } from '../../store/actions/modal';
-// import Form from './Form/Form';
-import Form from './Form/FormValidation';
+import Form from './Form/Form';
 
 
 class AddContactModal extends Component {
