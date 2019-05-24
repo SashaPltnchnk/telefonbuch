@@ -1,4 +1,4 @@
-import _ from 'lodash'
+// import _ from 'lodash'
 
 const initialState = {
     search: '',
@@ -20,7 +20,7 @@ export default function(state = initialState, action) {
         case 'SET_CONTACTS': {
             return {
                 ...state,
-                userContacts: action.contacts
+                contacts: action.contacts
             }
         }
 

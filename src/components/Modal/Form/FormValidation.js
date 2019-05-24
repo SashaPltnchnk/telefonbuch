@@ -13,12 +13,17 @@ var schema = Joi.object().keys({
     company: Joi.string().required()
   });
 
+//   changeHandlerValidation = () => {
+//       this.props.changeInputHandler();
+
+//   }
+
 
 class FormQ extends Component {
     render() {
         const {
             form: { name, surname, phone, mail, company },
-            errors, changeHandler, validateHandler 
+            errors, changesHandler, validateHandler 
           } = this.props;
 
 
@@ -31,9 +36,10 @@ class FormQ extends Component {
                             placeholder='Phone' 
                             name='phone' 
                             value={this.props.form[phone]} 
-                            onChange={ (e) => {this.props.changeInputHandler(e); changeHandler('phone')}} 
+                            onChange={this.props.changeInputHandler} 
+                            // onChange={ (e) => {this.props.changeInputHandler(e); changeHandler('phone')}} 
                             // onChange={ changeHandler('username') }
-                            onBlur={ validateHandler('phone') }
+                            // onBlur={ validateHandler('phone') }
                         />
                     </Form.Field>
                     <Form.Field >
@@ -44,7 +50,7 @@ class FormQ extends Component {
                             value={this.props.form[name]} 
                             onChange={this.props.changeInputHandler} 
                             // onChange={ changeHandler('name') }
-                            onBlur={ validateHandler('name') }
+                            // onBlur={ validateHandler('name') }
                         />
                     </Form.Field>
                     <Form.Field >
@@ -55,7 +61,7 @@ class FormQ extends Component {
                             value={this.props.form[surname]} 
                             onChange={this.props.changeInputHandler} 
                             // onChange={ changeHandler('surname') }
-                            onBlur={ validateHandler('surname') }
+                            // onBlur={ validateHandler('surname') }
                         />
                     </Form.Field>
                     <Form.Field >
@@ -66,7 +72,7 @@ class FormQ extends Component {
                             value={this.props.form[company]} 
                             onChange={this.props.changeInputHandler} 
                             // onChange={ changeHandler('company') }
-                            onBlur={ validateHandler('company') }
+                            // onBlur={ validateHandler('company') }
                         />
                     </Form.Field>
                     <Form.Field >
@@ -77,7 +83,7 @@ class FormQ extends Component {
                             value={this.props.form[mail]} 
                             onChange={this.props.changeInputHandler} 
                             // onChange={ changeHandler('mail') }
-                            onBlur={ validateHandler('mail') }
+                            // onBlur={ validateHandler('mail') }
                         />
                     </Form.Field>
             
@@ -88,6 +94,7 @@ class FormQ extends Component {
                         //     || !props.form.mail
                         //     || !props.form.company
                         // }
+                        onChange={changesHandler([['phone', ''], ['name', ''], ['surname', ''], ['mail', ''], ['company'], ''])}
                         color='purple'>{this.props.buttonText}</Button>
             </Form>
     )

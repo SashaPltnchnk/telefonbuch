@@ -8,27 +8,32 @@ const FormQ = (props) => {
         {
             label: 'Phone',
             name: 'phone',
-            placeholder: 'Phone'
+            placeholder: '380',
+            type: 'number'
         },
         {
             label: 'Name',
             name: 'name',
-            placeholder: 'Name'
+            placeholder: 'Name',
+            type: 'text'
         },
         {
             label: 'Surname',
             name: 'surname',
-            placeholder: 'Surname'
+            placeholder: 'Surname',
+            type: 'text'
         },
         {
             label: 'Mail',
             name: 'mail',
-            placeholder: 'Mail'
+            placeholder: 'Mail',
+            type: 'email'
         },
         {
             label: 'Company',
             name: 'company',
-            placeholder: 'Company'
+            placeholder: 'Company',
+            type: 'text'
         }
     ]
 // console.warn(props.form);
@@ -46,6 +51,7 @@ const FormQ = (props) => {
                         name={input.name} 
                         value={props.form[input.name]} 
                         onChange={props.changeInputHandler} 
+                        type={input.type}
                     />
                 </Form.Field>
                 )

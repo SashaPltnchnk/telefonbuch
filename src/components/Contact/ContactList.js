@@ -3,26 +3,30 @@ import ContactSummary from '../Contact/ContactSummary';
 import { connect } from 'react-redux';
 import { fetchContacts } from '../../store/actions/contacts';
 import { setContacts } from '../../store/actions/search';
-import classes from '../../App.module.css'
 
 
 class ContactList extends Component {
 
   componentDidMount() {
     this.props.fetchContacts();
-
+    this.props.setContacts(this.props.contacts)
   }
 
   render() {
     const {search} = this.props 
-    // const contactList = this.props.contactList.filter( item => item.name.first.indexOf(search) > -1 )
-    // debugger
+    const contactList = this.props.contacts.filter( contact => contact.name.indexOf(search) > -1 )
     return (
-      <div > 
-        {this.props.contacts.map(contact => (
-          <ContactSummary key={contact.id} {...contact}/>
-        ))}
-      </div>
+        <div > 
+            {/* {this.props.contacts.map(contact => (
+                <ContactSummary key={contact.id} {...contact}/>
+            ))} */}
+            {contactList.map(contact => (
+            <ContactSummary key={contact.id} {...contact}/>
+            ))}
+        </div>
+
+        
+      
     )
   }
 }
@@ -31,7 +35,7 @@ class ContactList extends Component {
 const mapStateToProps = state => ({
   contacts: state.contact.contacts,
   search: state.search.search,
-  contactList: state.search.contactList
+//   contactList: state.contact.contacts
 })
 
 const mapDispatchToProps = { fetchContacts, setContacts}

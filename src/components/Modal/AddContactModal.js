@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Modal, Divider, Grid, Segment, Icon, Message } from 'semantic-ui-react';
+import { Modal, Divider, Grid, Segment, Icon, Message, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { createContact, fetchContacts } from '../../store/actions/contacts';
 import { addContactCloseModal, addContactOpenModal } from '../../store/actions/modal';
-import Form from './Form/Form';
-// import Form from './Form/FormValidation';
+// import Form from './Form/Form';
+import Form from './Form/FormValidation';
 
 
 class AddContactModal extends Component {
@@ -84,7 +84,7 @@ class AddContactModal extends Component {
 
     render () {
         const contactImage = this.state.form.selectedFile ? 
-            <img src={this.state.form.selectedFile} alt="userImage" className="ui medium rounded image"></img>
+            <Image src={this.state.form.selectedFile} avatar size='medium' />
             : <Message>
                 <Message.Header>Please choose image</Message.Header>
             </Message>
@@ -120,6 +120,11 @@ class AddContactModal extends Component {
                     </Segment>
                     <Divider vertical>And</Divider>
                 </Modal.Content>
+                <Message 
+                    attached='bottom' 
+                    color='teal'
+                    header='Please, fill in ALL form fields and choose image!'>                 
+                </Message>
             </Modal>
         )
     }

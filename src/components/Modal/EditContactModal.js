@@ -102,7 +102,7 @@ class EditContactModal extends Component {
                     <Segment>
                      <Grid columns={2} relaxed='very'>
                             <Grid.Column>
-                                <Image src={this.state.form.selectedFile} wrapped ui={true} />
+                                <Image src={this.state.form.selectedFile} avatar size='medium' />
                                 
                                 <Divider horizontal>or</Divider>
 
