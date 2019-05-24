@@ -33,6 +33,10 @@ const contactSummary = (props) => {
       textTransform: 'capitalize'
   };
 
+    const iconStyle = {
+        paddingTop: '25px'
+    };
+
 //   const image = props.selectedFile ? <Image src={props.selectedFile} wrapped ui={false} /> : <Image src={img} wrapped ui={false} />
 
   return (
@@ -47,7 +51,7 @@ const contactSummary = (props) => {
                         onClick={deleteContact} 
                         link />
                 </List.Header>
-                <List.Description>
+                <List.Description style={iconStyle}>
                     <Icon 
                         name='pencil alternate' 
                         color='orange' 

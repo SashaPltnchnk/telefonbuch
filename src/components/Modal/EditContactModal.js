@@ -110,7 +110,7 @@ class EditContactModal extends Component {
                                     changeInputHandler={this.changeInputHandler}
                                     form={this.state.form}
                                     buttonText={'Save changes'}
-                                    buttonEvent={this.editContact}
+                                    // buttonEvent={this.editContact}
                                     />
                             </Grid.Column>
                         </Grid>

@@ -14,7 +14,18 @@ class ContactList extends Component {
 
   render() {
     const {search} = this.props 
-    const contactList = this.props.contacts.filter( contact => contact.name.indexOf(search) > -1 )
+
+    const contactList = this.props.contacts.filter( contact => trySearch(contact))
+      function trySearch(targetObj) {
+        for(let key in targetObj) {
+          if(targetObj[key].toString().toLowerCase().indexOf(search) > -1) {
+            return true
+          }
+        }
+        return false
+      }
+
+    // const contactList = this.props.contacts.filter( contact => contact.name.toLocaleLowerCase().indexOf(search) > -1 )
     return (
         <div > 
             {/* {this.props.contacts.map(contact => (

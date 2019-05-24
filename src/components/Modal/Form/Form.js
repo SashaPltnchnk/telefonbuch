@@ -16,7 +16,7 @@ class FormQ extends Component {
     isFormValid = () => {
         let isValid
 
-        Joi.validate(this.props.form, FormQ.formSchema, (err) => {
+        Joi.validate(this.props.form, FormQ.formSchema, {allowUnknown: true}, (err) => {
           if(err) {
               isValid = false
               console.log(this.props.form)
